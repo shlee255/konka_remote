@@ -53,3 +53,4 @@ flutter pub add ir_sensor_plugin
 https://github.com/yeikel16/ir_sensor_plugin
 
 https://github.com/e200/flutter-remote
+
