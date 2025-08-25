@@ -50,3 +50,6 @@ Your new app should now be created and open in VS Code. To try your new app, fol
 11. Add ir_sensor_plugin
 flutter pub add ir_sensor_plugin
 
+https://github.com/yeikel16/ir_sensor_plugin
+
+https://github.com/e200/flutter-remote
