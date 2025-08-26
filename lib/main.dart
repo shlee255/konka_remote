@@ -9,7 +9,7 @@ void main() {
 }
 
 class RemoteControlApp extends StatelessWidget {
-  const RemoteControlApp({Key? key}) : super(key: key);
+  const RemoteControlApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +27,7 @@ class RemoteControlApp extends StatelessWidget {
 }
 
 class RemoteControl extends StatelessWidget {
-  const RemoteControl({Key? key}) : super(key: key);
+  const RemoteControl({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -297,16 +297,17 @@ class OkButton extends StatelessWidget {
   final VoidCallback onPress;
 
   const OkButton({
-    Key? key,
+    super.key,
     required this.onPress,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return BaseButton(
       onPress: onPress,
       child: Container(
-        color: Colors.grey.withOpacity(.1),
+        // color: Colors.grey.withOpacity(.1),
+        color: Colors.grey.withValues(alpha: .1),
         child: const Center(
           child: Text(
             'OK',
@@ -326,10 +327,10 @@ class ArrowButton extends StatelessWidget {
   final VoidCallback onPress;
 
   const ArrowButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.onPress,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -347,9 +348,9 @@ class ArrowButton extends StatelessWidget {
 class TurnOnOffButton extends StatelessWidget {
   final VoidCallback onPress;
   const TurnOnOffButton({
-    Key? key,
+    super.key,
     required this.onPress,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -372,10 +373,10 @@ class ColoredButton extends StatelessWidget {
   final VoidCallback onPress;
 
   const ColoredButton({
-    Key? key,
+    super.key,
     required this.color,
     required this.onPress,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -419,18 +420,20 @@ class ShadowedIconButton extends StatelessWidget {
   final EdgeInsets? padding;
 
   const ShadowedIconButton({
-    Key? key,
+    super.key,
     required this.icon,
     required this.onPress,
     this.backgroundColor,
     this.shadowOpacity,
     this.padding,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
     return ShadowedButton(
       shadowOpacity: shadowOpacity,
+      onPress: onPress,
+      backgroundColor: backgroundColor,
       child: Padding(
         padding: padding ?? const EdgeInsets.all(15),
         child: IconTheme(
@@ -440,8 +443,6 @@ class ShadowedIconButton extends StatelessWidget {
           child: icon,
         ),
       ),
-      onPress: onPress,
-      backgroundColor: backgroundColor,
     );
   }
 }
@@ -453,12 +454,12 @@ class ShadowedButton extends StatelessWidget {
   final double? shadowOpacity;
 
   const ShadowedButton({
-    Key? key,
+    super.key,
     required this.child,
     required this.onPress,
     this.backgroundColor,
     this.shadowOpacity,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -466,8 +467,8 @@ class ShadowedButton extends StatelessWidget {
       shadowOpacity: shadowOpacity,
       child: BaseButton(
         backgroundColor: backgroundColor,
-        child: child,
         onPress: onPress,
+        child: child,
       ),
     );
   }
@@ -479,11 +480,11 @@ class BaseButton extends StatelessWidget {
   final Color? backgroundColor;
 
   const BaseButton({
-    Key? key,
+    super.key,
     required this.child,
     required this.onPress,
     this.backgroundColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -504,9 +505,9 @@ class VerticalButtons extends StatelessWidget {
   final List<Widget> children;
 
   const VerticalButtons({
-    Key? key,
+    super.key,
     required this.children,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -530,11 +531,11 @@ class CircularShadow extends StatelessWidget {
   final double? shadowOpacity;
 
   const CircularShadow({
-    Key? key,
+    super.key,
     required this.child,
     this.blur,
     this.shadowOpacity,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -544,7 +545,7 @@ class CircularShadow extends StatelessWidget {
         boxShadow: [
           BoxShadow(
             color:
-                Theme.of(context).shadowColor.withOpacity(shadowOpacity ?? .1),
+                Theme.of(context).shadowColor.withValues(alpha: shadowOpacity ?? .1),
             blurRadius: blur ?? 5,
           ),
         ],

@@ -54,6 +54,16 @@ abstract class SignalEmmiter {
 }
 
 class LgRemoteSignalEmmiter implements SignalEmmiter {
+  static const int hdrMark  = 3000;
+  static const int hdrSpace = 3000;
+
+  static const int mark        = 500;
+  static const int oneSpace    = 2500;
+  static const int zeroSpace   = 1500;
+
+  static const int end1Space = 4000;
+  static const int end2Space = 23300;
+
   @override
   void backwards() {
     emmit(LgSignalCodes.fastBackward);
@@ -166,11 +176,29 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   @override
   void yellow() {
-    emmit(LgSignalCodes.yellow);
+    // emmit(LgSignalCodes.yellow);
+
+git    emitInt(list);
+  }
+
+  List<int> decodeInt(int num, int bits)
+    {
+        List<int> values = [];
+        for (int i = bits - 1; i >= 0; i--)
+        {
+            values.add(mark);
+            values.add(((num & (1 << i)) == 0)?zeroSpace:oneSpace);
+        }
+        return values;
+    }
+
+  void emitInt(List<int> list) {
+    IrSensorPlugin.transmitListInt(list: list);
   }
 
   void emmit(String pattern) {
     IrSensorPlugin.transmitString(pattern: pattern);
+
 /*
     final isolateName = Random().nextInt(100).toString();
 
