@@ -64,6 +64,67 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
   static const int end1Space = 4000;
   static const int end2Space = 23300;
 
+  static const int konka0 = 0x0200;
+  static const int konka1 = 0x0201;
+  static const int konka2 = 0x0202;
+  static const int konka3 = 0x0203;
+  static const int konka4 = 0x0204;
+  static const int konka5 = 0x0205;
+  static const int konka6 = 0x0206;
+  static const int konka7 = 0x0207;
+  static const int konka8 = 0x0208;
+  static const int konka9 = 0x0209;
+
+  static const int konkaInfo   = 0x020A;   // Program Information
+  static const int konkaPower  = 0x020B;
+  static const int konkaYellow = 0x020C;
+  static const int konkaSound  = 0x020D;
+  static const int konkaRecDec = 0x020E;
+  static const int konkaFav    = 0x020F;
+
+  static const int konkaChannelDown = 0x0210;
+  static const int konkaChannelUp   = 0x0211;
+  static const int konkaVolumeDown  = 0x0212;
+  static const int konkaVolumeUp    = 0x0213;
+
+  static const int konkaMute   = 0x0214;
+  static const int konkaMenu   = 0x0215;
+  static const int konkaBlue   = 0x0216;
+  static const int konkaMTS    = 0x0217;  // Select Audio Channel
+  static const int konkaEPS    = 0x0218;
+  static const int konkaFreeze = 0x0219;
+
+  static const int konkaRed     = 0x021A;   // @@@@@ NOT KNOWN @@@@@
+  static const int konkaList    = 0x021B;    // Channel List
+  static const int konkaInput   = 0x021C;
+  static const int konkaPicture = 0x021D;  // Video Normal, Soft,
+  static const int konkaZoom    = 0x021E;   // 16:9, 4:3 ... ... No use for DTV
+  static const int konkaGreen   = 0x021F;   // @@@@@ NOT KNOWN @@@@@
+
+  static const int konkaIndex    = 0x0220;
+  static const int konkaRadio    = 0x0221;
+  static const int konkaFB       = 0x0222;
+  static const int konkaFF       = 0x0223;
+  static const int konkaBackward = 0x0224;
+  static const int konkaPlay     = 0x0225;
+  static const int konkaPause    = 0x0226;
+  static const int konkaRec      = 0x0227;
+  static const int konkaForward  = 0x0228;
+  static const int konkaUnknown  = 0x0229;
+  static const int konkaStop     = 0x022A;
+
+  static const int konkaUp    = 0x022B;
+  static const int konkaDown  = 0x022C;
+  static const int konkaLeft  = 0x022D;
+  static const int konkaRight = 0x022E;
+  static const int konkaOk    = 0x022F;
+
+  static const int konkaExit = 0x0230;
+  static const int konkaHdmi = 0x0231;
+  static const int konkaATV  = 0x0232;
+  static const int konkaDTV  = 0x0233;
+  static const int konka3D   = 0x0234;
+
   @override
   void backwards() {
     emmit(LgSignalCodes.fastBackward);
@@ -177,20 +238,38 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
   @override
   void yellow() {
     // emmit(LgSignalCodes.yellow);
-
-git    emitInt(list);
+    emitKonka(konka8);
+    emitKonka(konka1);
+    emitKonka(konkaOk);
+//    emitKonka(0x0200);
   }
 
-  List<int> decodeInt(int num, int bits)
+  void emitKonka(int command) {
+    List<int> list = [];
+    list.add(hdrMark);
+    list.add(hdrSpace);
+
+    List<int>values = decodeInt(command,16);
+
+    list.addAll(values);
+
+    list.add(mark);
+    list.add(end1Space);
+    list.add(mark);
+    list.add(end2Space);
+    emitInt(list);
+  }
+
+  List<int> decodeInt(int num, int bits) {
+    List<int> values = [];
+
+    for (int i = bits - 1; i >= 0; i--)
     {
-        List<int> values = [];
-        for (int i = bits - 1; i >= 0; i--)
-        {
-            values.add(mark);
-            values.add(((num & (1 << i)) == 0)?zeroSpace:oneSpace);
-        }
-        return values;
+        values.add(mark);
+        values.add(((num & (1 << i)) == 0)?zeroSpace:oneSpace);
     }
+    return values;
+  }
 
   void emitInt(List<int> list) {
     IrSensorPlugin.transmitListInt(list: list);
