@@ -8,6 +8,7 @@ import 'package:riverpod/riverpod.dart';
 
 IsolateHandler _isolates = IsolateHandler();
 
+@pragma("vm:_entryPoint")
 void _entryPoint(Map<String, dynamic> context) {
   final _messenger = HandledIsolate.initialize(context);
 
@@ -169,20 +170,23 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
   }
 
   void emmit(String pattern) {
-    final _isolateName = Random().nextInt(100).toString();
+    IrSensorPlugin.transmitString(pattern: pattern);
+/*
+    final isolateName = Random().nextInt(100).toString();
 
     _isolates = IsolateHandler();
 
     _isolates.spawn(
       _entryPoint,
-      name: _isolateName,
+      name: isolateName,
       onInitialized: () => _isolates.send(
         jsonEncode({
-          'isolate': _isolateName,
+          'isolate': isolateName,
           'pattern': pattern,
         }),
-        to: _isolateName,
+        to: isolateName,
       ),
     );
+*/    
   }
 }
