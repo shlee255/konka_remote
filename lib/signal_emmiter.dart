@@ -127,12 +127,14 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   @override
   void backwards() {
-    emmit(LgSignalCodes.fastBackward);
+    emitKonka(konkaFB);
+    // emmit(LgSignalCodes.fastBackward);
   }
 
   @override
   void forward() {
-    emmit(LgSignalCodes.fastForward);
+    emitKonka(konkaFF);
+    // emmit(LgSignalCodes.fastForward);
   }
 
   @override
@@ -142,12 +144,14 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   @override
   void info() {
-    emmit(LgSignalCodes.info);
+    emitKonka(konkaInfo);
+    // emmit(LgSignalCodes.info);
   }
 
   @override
   void mute() {
-    emmit(LgSignalCodes.mute);
+    emitKonka(konkaMute);
+    // emmit(LgSignalCodes.mute);
   }
 
   @override
@@ -172,42 +176,50 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   @override
   void nextChannel() {
-    emmit(LgSignalCodes.channelUp);
+    emitKonka(konkaChannelUp);
+    // emmit(LgSignalCodes.channelUp);
   }
 
   @override
   void ok() {
-    emmit(LgSignalCodes.ok);
+    emitKonka(konkaOk);
+    // emmit(LgSignalCodes.ok);
   }
 
   @override
   void play() {
-    emmit(LgSignalCodes.play);
+    emitKonka(konkaPlay);
+    // emmit(LgSignalCodes.play);
   }
 
   @override
   void previousChannel() {
-    emmit(LgSignalCodes.channelDown);
+    emitKonka(konkaChannelDown);
+    // emmit(LgSignalCodes.channelDown);
   }
 
   @override
   void pause() {
-    emmit(LgSignalCodes.pause);
+    emitKonka(konkaPause);
+    // emmit(LgSignalCodes.pause);
   }
 
   @override
   void turnOnOff() {
-    emmit(LgSignalCodes.turnOnOff);
+    emitKonka(konkaPower);
+    //emmit(LgSignalCodes.turnOnOff);
   }
 
   @override
   void volumeDown() {
-    emmit(LgSignalCodes.volumeDown);
+    emitKonka(konkaVolumeDown);
+    // emmit(LgSignalCodes.volumeDown);
   }
 
   @override
   void volumeUp() {
-    emmit(LgSignalCodes.volumeUp);
+    emitKonka(konkaVolumeUp);
+    // emmit(LgSignalCodes.volumeUp);
   }
 
   @override
@@ -217,30 +229,35 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   @override
   void exit() {
-    emmit(LgSignalCodes.exit);
+    emitKonka(konkaExit);
+    // emmit(LgSignalCodes.exit);
   }
 
   @override
   void blue() {
-    emmit(LgSignalCodes.blue);
+    emitKonka(konkaBlue);
+    // emmit(LgSignalCodes.blue);
   }
 
   @override
   void green() {
-    emmit(LgSignalCodes.green);
+    emitKonka(konkaGreen);
+    // emmit(LgSignalCodes.green);
   }
 
   @override
   void red() {
-    emmit(LgSignalCodes.red);
+    emitKonka(konkaRed);
+    // emmit(LgSignalCodes.red);
   }
 
   @override
   void yellow() {
+    emitKonka(konkaYellow);
     // emmit(LgSignalCodes.yellow);
-    emitKonka(konka8);
-    emitKonka(konka1);
-    emitKonka(konkaOk);
+    // emitKonka(konka8);
+    // emitKonka(konka1);
+    // emitKonka(konkaOk);
 //    emitKonka(0x0200);
   }
 
