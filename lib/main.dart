@@ -70,14 +70,17 @@ class RemoteControl extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          EpsButton(
+                          myTextButton(
                             onPress: ref.read(signalEmmiter).eps,
+                            text: "EPS"
                           ),
-                          MenuButton(
+                          myTextButton(
                             onPress: ref.read(signalEmmiter).menu,
+                            text: "Menu"
                           ),
-                          EpsButton(
+                          myTextButton(
                             onPress: ref.read(signalEmmiter).eps,
+                            text: "1",
                           ),
                         ],
                       ),
@@ -308,12 +311,14 @@ class RemoteControl extends StatelessWidget {
   }
 }
 
-class EpsButton extends StatelessWidget {
+class myTextButton extends StatelessWidget {
   final VoidCallback onPress;
+  final String text;
 
-  const EpsButton({
+  const myTextButton({
     super.key,
     required this.onPress,
+    required this.text,
   });
 
   @override
@@ -326,30 +331,7 @@ class EpsButton extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Padding
         textStyle: const TextStyle(fontSize: 20), // Text style
       ),
-      child: const Text('EPS'),
-    );
-  }
-}
-
-class MenuButton extends StatelessWidget {
-  final VoidCallback onPress;
-
-  const MenuButton({
-    super.key,
-    required this.onPress,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return TextButton(
-      onPressed: onPress,
-      style: TextButton.styleFrom(
-        foregroundColor: Colors.black, // Text color
-        backgroundColor: Colors.grey[200], // Background color
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Padding
-        textStyle: const TextStyle(fontSize: 20), // Text style
-      ),
-      child: const Text('Menu'),
+      child: Text(text),
     );
   }
 }
