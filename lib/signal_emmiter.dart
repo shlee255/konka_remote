@@ -36,6 +36,8 @@ abstract class SignalEmmiter {
   void navigateLeft();
   void navigateRight();
   void ok();
+  void eps();
+  void menu();
   void exit();
   void back();
   void volumeUp();
@@ -183,6 +185,18 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
   @override
   void ok() {
     emitKonka(konkaOk);
+    // emmit(LgSignalCodes.ok);
+  }
+
+  @override
+  void eps() {
+    emitKonka(konkaEPS);
+    // emmit(LgSignalCodes.ok);
+  }
+
+  @override
+  void menu() {
+    emitKonka(konkaMenu);
     // emmit(LgSignalCodes.ok);
   }
 

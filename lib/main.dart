@@ -44,7 +44,8 @@ class RemoteControl extends StatelessWidget {
                     mainAxisSize: MainAxisSize.min,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const SizedBox(height: 30),
+                      // const SizedBox(height: 30),
+                      /*
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -64,7 +65,22 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 15),
+                      //const SizedBox(height: 15),
+                      */
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          EpsButton(
+                            onPress: ref.read(signalEmmiter).eps,
+                          ),
+                          MenuButton(
+                            onPress: ref.read(signalEmmiter).menu,
+                          ),
+                          EpsButton(
+                            onPress: ref.read(signalEmmiter).eps,
+                          ),
+                        ],
+                      ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -87,7 +103,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 15),
+                      // const SizedBox(height: 15),
                       CircularShadow(
                         child: ClipOval(
                           child: ColoredBox(
@@ -136,7 +152,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ),
                       ),
-                      const SizedBox(height: 15),
+                      // const SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -160,7 +176,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 10),
+                      // const SizedBox(height: 10),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -216,7 +232,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 30),
+                      // const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -257,7 +273,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 30),
+                      // const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -279,7 +295,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      const SizedBox(height: 30),
+                      // const SizedBox(height: 30),
                     ],
                   );
                 },
@@ -292,6 +308,51 @@ class RemoteControl extends StatelessWidget {
   }
 }
 
+class EpsButton extends StatelessWidget {
+  final VoidCallback onPress;
+
+  const EpsButton({
+    super.key,
+    required this.onPress,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: onPress,
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.black, // Text color
+        backgroundColor: Colors.grey[200], // Background color
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Padding
+        textStyle: const TextStyle(fontSize: 20), // Text style
+      ),
+      child: const Text('EPS'),
+    );
+  }
+}
+
+class MenuButton extends StatelessWidget {
+  final VoidCallback onPress;
+
+  const MenuButton({
+    super.key,
+    required this.onPress,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return TextButton(
+      onPressed: onPress,
+      style: TextButton.styleFrom(
+        foregroundColor: Colors.black, // Text color
+        backgroundColor: Colors.grey[200], // Background color
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15), // Padding
+        textStyle: const TextStyle(fontSize: 20), // Text style
+      ),
+      child: const Text('Menu'),
+    );
+  }
+}
 
 class OkButton extends StatelessWidget {
   final VoidCallback onPress;
