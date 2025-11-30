@@ -43,7 +43,7 @@ class RemoteControl extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Center(
             child: SizedBox(
-              width: 250,
+              width: 370,
               child: Consumer(
                 builder: (context, ref, _) {
                   return Column(
@@ -77,6 +77,56 @@ class RemoteControl extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "81"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "82"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "83",
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit84,
+                            text: "84",
+                          ),                        
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit85,
+                            text: "85",
+                          ),                        
+                          ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit31,
+                            text: "31"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit32,
+                            text: "32"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit77,
+                            text: "77",
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit78,
+                            text: "78",
+                          ),                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit99,
+                            text: "99",
+                          ),                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
                             onPress: ref.read(signalEmmiter).eps,
                             text: "EPS"
                           ),
@@ -85,11 +135,12 @@ class RemoteControl extends StatelessWidget {
                             text: "Menu"
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).eps,
-                            text: "1",
+                            onPress: ref.read(signalEmmiter).hdmi,
+                            text: "HDMI",
                           ),
                         ],
                       ),
+                      const SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -112,7 +163,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // const SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       CircularShadow(
                         child: ClipOval(
                           child: ColoredBox(
@@ -161,7 +212,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ),
                       ),
-                      // const SizedBox(height: 15),
+                      const SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -178,14 +229,19 @@ class RemoteControl extends StatelessWidget {
                           ),
                           Transform.translate(
                             offset: const Offset(0, -20),
-                            child: ShadowedIconButton(
-                              icon: const Icon(Icons.arrow_back),
-                              onPress: ref.read(signalEmmiter).back,
-                            ),
+                            child: myTextButton(
+                            onPress: ref.read(signalEmmiter).dtv,
+                            text: "DTV",
+                          ),
+                          //  ShadowedIconButton(
+                          //    icon: const Icon(Icons.arrow_back),
+                          //    onPress: ref.read(signalEmmiter).back,
+                          //  ),
                           ),
                         ],
                       ),
                       // const SizedBox(height: 10),
+                      /*
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -241,7 +297,9 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
+                      */
                       // const SizedBox(height: 30),
+                      /*
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -282,7 +340,8 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // const SizedBox(height: 30),
+                      */
+                      const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [

@@ -1,5 +1,5 @@
 import 'dart:convert';
-import 'dart:math';
+// import 'dart:math';
 
 import 'lg_signal_codes.dart';
 import 'package:ir_sensor_plugin/ir_sensor_plugin.dart';
@@ -53,6 +53,18 @@ abstract class SignalEmmiter {
   void green();
   void yellow();
   void blue();
+  void emit81();
+  void emit82();
+  void emit83();
+  void emit84();
+  void emit85();
+  void emit31();
+  void emit32();
+  void emit77();
+  void emit78();  
+  void emit99();
+  void hdmi();
+  void dtv();
 }
 
 class LgRemoteSignalEmmiter implements SignalEmmiter {
@@ -158,22 +170,26 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   @override
   void navigateDown() {
-    emmit(LgSignalCodes.navigateDown);
+    emitKonka(konkaDown);
+    // emmit(LgSignalCodes.navigateDown);
   }
 
   @override
   void navigateLeft() {
-    emmit(LgSignalCodes.navigateLeft);
+    emitKonka(konkaLeft);
+    // emmit(LgSignalCodes.navigateLeft);
   }
 
   @override
   void navigateRight() {
-    emmit(LgSignalCodes.navigateRight);
+    emitKonka(konkaRight);
+    // emmit(LgSignalCodes.navigateRight);
   }
 
   @override
   void navigateUp() {
-    emmit(LgSignalCodes.navigateUp);
+    emitKonka(konkaUp);
+    // emmit(LgSignalCodes.navigateUp);
   }
 
   @override
@@ -275,6 +291,88 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 //    emitKonka(0x0200);
   }
 
+  @override
+  void emit81() {
+    emitKonka(konka8);
+    emitKonka(konka1);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void emit82() {
+    emitKonka(konka8);
+    emitKonka(konka2);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void emit83() {
+    emitKonka(konka8);
+    emitKonka(konka3);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void emit84() {
+    emitKonka(konka8);
+    emitKonka(konka4);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void emit85() {
+    emitKonka(konka8);
+    emitKonka(konka5);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void emit31() {
+    emitKonka(konka3);
+    emitKonka(konka1);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void emit32() {
+    emitKonka(konka3);
+    emitKonka(konka2);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void emit77() {
+    emitKonka(konka7);
+    emitKonka(konka3D);
+    emitKonka(konka7);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void emit78() {
+    emitKonka(konka7);
+    emitKonka(konka8);
+    emitKonka(konkaOk);    
+  }
+  
+  @override
+  void emit99() {
+    emitKonka(konka9);
+    emitKonka(konka3D);
+    emitKonka(konka9);
+    emitKonka(konkaOk);    
+  }
+
+  @override
+  void hdmi() {
+    emitKonka(konkaHdmi);
+  }
+
+  @override
+  void dtv() {
+    emitKonka(konkaDTV);
+  }
+
   void emitKonka(int command) {
     List<int> list = [];
     list.add(hdrMark);
@@ -308,23 +406,5 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   void emmit(String pattern) {
     IrSensorPlugin.transmitString(pattern: pattern);
-
-/*
-    final isolateName = Random().nextInt(100).toString();
-
-    _isolates = IsolateHandler();
-
-    _isolates.spawn(
-      _entryPoint,
-      name: isolateName,
-      onInitialized: () => _isolates.send(
-        jsonEncode({
-          'isolate': isolateName,
-          'pattern': pattern,
-        }),
-        to: isolateName,
-      ),
-    );
-*/    
   }
 }
