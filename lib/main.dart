@@ -3,8 +3,14 @@ import 'package:flutter_feather_icons/flutter_feather_icons.dart';
 import 'signal_emmiter.dart';
 import 'theme.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter/services.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized(); // Required before calling platform services
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp, // Lock to portrait mode (upright)
+    // DeviceOrientation.landscapeLeft, // Add other orientations if desired
+  ]);
   runApp(const RemoteControlApp());
 }
 
