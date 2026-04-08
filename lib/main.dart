@@ -43,7 +43,7 @@ class RemoteControl extends StatelessWidget {
           physics: const BouncingScrollPhysics(),
           child: Center(
             child: SizedBox(
-              width: 370,
+              width: 300,
               child: Consumer(
                 builder: (context, ref, _) {
                   return Column(
@@ -73,6 +73,418 @@ class RemoteControl extends StatelessWidget {
                       ),
                       //const SizedBox(height: 15),
                       */
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          TurnOnOffButton(
+                              onPress: ref.read(signalEmmiter).turnOnOff,
+                            ),
+                          ShadowedIconButton(
+                            icon: const Icon(Icons.arrow_back),
+                            onPress: ref.read(signalEmmiter).info,
+                          ),  
+                          ShadowedIconButton(
+                            icon: const Icon(FeatherIcons.home),
+                            onPress: ref.read(signalEmmiter).home,
+                          ),
+                          ShadowedIconButton(
+                            icon: const Icon(Icons.tv),
+                            onPress: ref.read(signalEmmiter).info,
+                          ),                            
+                        ],
+                      ),
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "1"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "2"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "3",
+                          ),
+                          ShadowedIconButton(
+                            icon: const Icon(Icons.exit_to_app),
+                            onPress: ref.read(signalEmmiter).info,
+                          ),  
+                          ],
+                      ),
+
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "4"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "5"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "6",
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "TXT",
+                          ),
+                          ],
+                      ),
+
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "7"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "8"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "9",
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "FAV",
+                          ),
+                          ],
+                      ),
+
+                      const SizedBox(height: 5),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ShadowedIconButton(
+                              icon: const Icon(Icons.info_outline),
+                              onPress: ref.read(signalEmmiter).info,
+                            ),                          
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "0"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "AD",
+                          ),
+                                                    ShadowedIconButton(
+                            icon: const Icon(FeatherIcons.settings),
+                            onPress: ref.read(signalEmmiter).home,
+                          ),
+                          ],
+                      ),
+/*
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "->"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "TEXT"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "FAV",
+                          ),
+                          ],
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "Person"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "Speak"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "Set",
+                          ),
+                          ],
+                      ),
+*/
+                      const SizedBox(height: 15),
+                      CircularShadow(
+                        child: ClipOval(
+                          child: ColoredBox(                          
+                            color: Theme.of(context).cardColor,
+                            child: GridView(
+                              physics: const NeverScrollableScrollPhysics(),
+                              padding: EdgeInsetsDirectional.zero,
+                              shrinkWrap: true,
+                              gridDelegate:
+                                  const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 3,
+                              ),
+                              children: [
+                                const SizedBox.shrink(),
+                                ArrowButton(
+                                  icon: Icons.arrow_drop_up_rounded,
+                                  onPress:
+                                      ref.read(signalEmmiter).navigateUp,
+                                ),
+                                const SizedBox.shrink(),
+                                ArrowButton(
+                                  icon: Icons.arrow_left_rounded,
+                                  onPress: ref
+                                      .read(signalEmmiter)
+                                      .navigateLeft,
+                                ),
+                                OkButton(
+                                  onPress: ref.read(signalEmmiter).ok,
+                                ),
+                                ArrowButton(
+                                  icon: Icons.arrow_right_rounded,
+                                  onPress: ref
+                                      .read(signalEmmiter)
+                                      .navigateRight,
+                                ),
+                                const SizedBox.shrink(),
+                                ArrowButton(
+                                  icon: Icons.arrow_drop_down_rounded,
+                                  onPress: ref
+                                      .read(signalEmmiter)
+                                      .navigateDown,
+                                ),
+                                const SizedBox.shrink(),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                      
+/*                      
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "<-"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "Home"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "TV",
+                          ),
+                          ],
+                      ),
+                      const SizedBox(height: 15),     
+*/
+
+/*
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "EXIT"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "Vol+"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: "<<",
+                          ),
+                          ],
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                            ShadowedIconButton(
+                              icon: const Icon(Icons.volume_off),
+                              onPress: ref.read(signalEmmiter).info,
+                            ), 
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "Vol-"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit83,
+                            text: ">>",
+                          ),
+                          ],
+                      ),
+*/
+
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                           Column(
+                            children: [
+                              myTextButton(
+                                onPress: ref.read(signalEmmiter).emit81,
+                                text: "EXIT"
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                '  ',
+                                style: TextStyle(
+                                  color: Colors.grey.shade400,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              ShadowedIconButton(
+                                icon: const Icon(Icons.volume_off),
+                                onPress: ref.read(signalEmmiter).info,
+                              ),                               
+                            ],
+                          ),                          
+                          VerticalButtons(
+                            children: [
+                              ShadowedIconButton(
+                                shadowOpacity: 0,
+                                icon: const Icon(FeatherIcons.volume2),
+                                onPress: ref.read(signalEmmiter).volumeUp,
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'vol',
+                                style: TextStyle(
+                                  color: Colors.grey.shade400,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              ShadowedIconButton(
+                                shadowOpacity: 0,
+                                icon: const Icon(FeatherIcons.volume1),
+                                onPress:
+                                    ref.read(signalEmmiter).volumeDown,
+                              ),
+                            ],
+                          ),
+                          VerticalButtons(
+                            children: [
+                              ShadowedIconButton(
+                                shadowOpacity: 0,
+                                icon: const Icon(FeatherIcons.chevronUp),
+                                onPress:
+                                    ref.read(signalEmmiter).nextChannel,
+                              ),
+                              const SizedBox(height: 10),
+                              Text(
+                                'ch',
+                                style: TextStyle(
+                                  color: Colors.grey.shade400,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              ShadowedIconButton(
+                                shadowOpacity: 0,
+                                icon: const Icon(FeatherIcons.chevronDown),
+                                onPress: ref
+                                    .read(signalEmmiter)
+                                    .previousChannel,
+                              ),
+                            ],
+                          ),
+                           Column(
+                            children: [
+                              ShadowedIconButton(
+                                icon: const Icon(Icons.fast_rewind),
+                                onPress: ref.read(signalEmmiter).info,
+                              ),                               
+                              const SizedBox(height: 10),
+                              Text(
+                                '  ',
+                                style: TextStyle(
+                                  color: Colors.grey.shade400,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              ShadowedIconButton(
+                                icon: const Icon(Icons.fast_forward),
+                                onPress: ref.read(signalEmmiter).info,
+                              ),                               
+                            ],
+                          ),                          
+                        ],
+                      ),
+
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          ColoredButton(
+                            color: Colors.red.shade400,
+                            onPress: ref.read(signalEmmiter).red,
+                          ),
+                          ColoredButton(
+                            color: Colors.green.shade400,
+                            onPress: ref.read(signalEmmiter).green,
+                          ),
+                          ColoredButton(
+                            color: Colors.yellow.shade400,
+                            onPress: ref.read(signalEmmiter).yellow,
+                          ),
+                          ColoredButton(
+                            color: Colors.blue.shade400,
+                            onPress: ref.read(signalEmmiter).blue,
+                          ),
+                        ],
+                      ),
+
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "NETFLIX"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "Prime"
+                          ),
+                          ],
+                      ),
+
+                      const SizedBox(height: 15),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit81,
+                            text: "YouTube"
+                          ),
+                          myTextButton(
+                            onPress: ref.read(signalEmmiter).emit82,
+                            text: "Custom"
+                          ),
+                          ],
+                      ),                      
+
+/*
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -141,77 +553,6 @@ class RemoteControl extends StatelessWidget {
                         ],
                       ),
                       const SizedBox(height: 15),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Transform.translate(
-                            offset: const Offset(0, 20),
-                            child: ShadowedIconButton(
-                              icon: const Icon(Icons.info_outline),
-                              onPress: ref.read(signalEmmiter).info,
-                            ),
-                          ),
-                          ShadowedIconButton(
-                            icon: const Icon(FeatherIcons.home),
-                            onPress: ref.read(signalEmmiter).home,
-                          ),
-                          Transform.translate(
-                            offset: const Offset(0, 20),
-                            child: TurnOnOffButton(
-                              onPress: ref.read(signalEmmiter).turnOnOff,
-                            ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 15),
-                      CircularShadow(
-                        child: ClipOval(
-                          child: ColoredBox(
-                            color: Theme.of(context).cardColor,
-                            child: GridView(
-                              physics: const NeverScrollableScrollPhysics(),
-                              padding: EdgeInsetsDirectional.zero,
-                              shrinkWrap: true,
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 3,
-                              ),
-                              children: [
-                                const SizedBox.shrink(),
-                                ArrowButton(
-                                  icon: Icons.arrow_drop_up_rounded,
-                                  onPress:
-                                      ref.read(signalEmmiter).navigateUp,
-                                ),
-                                const SizedBox.shrink(),
-                                ArrowButton(
-                                  icon: Icons.arrow_left_rounded,
-                                  onPress: ref
-                                      .read(signalEmmiter)
-                                      .navigateLeft,
-                                ),
-                                OkButton(
-                                  onPress: ref.read(signalEmmiter).ok,
-                                ),
-                                ArrowButton(
-                                  icon: Icons.arrow_right_rounded,
-                                  onPress: ref
-                                      .read(signalEmmiter)
-                                      .navigateRight,
-                                ),
-                                const SizedBox.shrink(),
-                                ArrowButton(
-                                  icon: Icons.arrow_drop_down_rounded,
-                                  onPress: ref
-                                      .read(signalEmmiter)
-                                      .navigateDown,
-                                ),
-                                const SizedBox.shrink(),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ),
                       const SizedBox(height: 15),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -241,7 +582,9 @@ class RemoteControl extends StatelessWidget {
                         ],
                       ),
                       // const SizedBox(height: 10),
-                      /*
+*/
+
+/*                
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -297,7 +640,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                         ],
                       ),
-                      */
+*/                      
                       // const SizedBox(height: 30),
                       /*
                       Row(
@@ -341,6 +684,7 @@ class RemoteControl extends StatelessWidget {
                         ],
                       ),
                       */
+/*                      
                       const SizedBox(height: 30),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -364,6 +708,7 @@ class RemoteControl extends StatelessWidget {
                         ],
                       ),
                       // const SizedBox(height: 30),
+*/                      
                     ],
                   );
                 },
@@ -452,6 +797,26 @@ class ArrowButton extends StatelessWidget {
     );
   }
 }
+
+class SettingsButton extends StatelessWidget {
+  final VoidCallback onPress;
+  const SettingsButton({
+    super.key,
+    required this.onPress,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return BaseButton(
+      onPress: onPress,
+        child: const Icon(
+          FeatherIcons.settings,
+          color: Colors.grey,
+        ),
+    );
+  }
+}
+
 
 class TurnOnOffButton extends StatelessWidget {
   final VoidCallback onPress;

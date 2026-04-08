@@ -1,0 +1,18 @@
+Powwr
+    1   2   3
+    4   5   6
+    7   8   9
+  info  0   AD
+  ->  Text  FAV
+  P    Mic  Set
+        Up
+    <   OK  >
+       Down
+
+  <-   Home TV
+Exit   Vol+ <<
+Mute   Vol- >>
+
+Red Green Yellow Blue
+NetFLIX     Prime Video
+YouTube     Custom
