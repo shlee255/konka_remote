@@ -82,7 +82,7 @@ class RemoteControl extends StatelessWidget {
                             ),
                           ShadowedIconButton(
                             icon: const Icon(Icons.arrow_back),
-                            onPress: ref.read(signalEmmiter).info,
+                            onPress: ref.read(signalEmmiter).back,
                           ),  
                           ShadowedIconButton(
                             icon: const Icon(FeatherIcons.home),
@@ -90,7 +90,7 @@ class RemoteControl extends StatelessWidget {
                           ),
                           ShadowedIconButton(
                             icon: const Icon(Icons.tv),
-                            onPress: ref.read(signalEmmiter).info,
+                            onPress: ref.read(signalEmmiter).tv,
                           ),                            
                         ],
                       ),
@@ -99,20 +99,20 @@ class RemoteControl extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit81,
+                            onPress: ref.read(signalEmmiter).emit1,
                             text: "1"
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit82,
+                            onPress: ref.read(signalEmmiter).emit2,
                             text: "2"
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit83,
+                            onPress: ref.read(signalEmmiter).emit3,
                             text: "3",
                           ),
                           ShadowedIconButton(
                             icon: const Icon(Icons.exit_to_app),
-                            onPress: ref.read(signalEmmiter).info,
+                            onPress: ref.read(signalEmmiter).input,
                           ),  
                           ],
                       ),
@@ -122,19 +122,19 @@ class RemoteControl extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit81,
+                            onPress: ref.read(signalEmmiter).emit4,
                             text: "4"
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit82,
+                            onPress: ref.read(signalEmmiter).emit5,
                             text: "5"
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit83,
+                            onPress: ref.read(signalEmmiter).emit6,
                             text: "6",
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit83,
+                            onPress: ref.read(signalEmmiter).text,
                             text: "TXT",
                           ),
                           ],
@@ -145,19 +145,19 @@ class RemoteControl extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit81,
+                            onPress: ref.read(signalEmmiter).emit7,
                             text: "7"
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit82,
+                            onPress: ref.read(signalEmmiter).emit8,
                             text: "8"
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit83,
+                            onPress: ref.read(signalEmmiter).emit9,
                             text: "9",
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit83,
+                            onPress: ref.read(signalEmmiter).fav,
                             text: "FAV",
                           ),
                           ],
@@ -172,16 +172,16 @@ class RemoteControl extends StatelessWidget {
                               onPress: ref.read(signalEmmiter).info,
                             ),                          
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit82,
+                            onPress: ref.read(signalEmmiter).emit0,
                             text: "0"
                           ),
                           myTextButton(
-                            onPress: ref.read(signalEmmiter).emit83,
+                            onPress: ref.read(signalEmmiter).emitAD,
                             text: "AD",
                           ),
                                                     ShadowedIconButton(
                             icon: const Icon(FeatherIcons.settings),
-                            onPress: ref.read(signalEmmiter).home,
+                            onPress: ref.read(signalEmmiter).settings,
                           ),
                           ],
                       ),
@@ -339,7 +339,7 @@ class RemoteControl extends StatelessWidget {
                            Column(
                             children: [
                               myTextButton(
-                                onPress: ref.read(signalEmmiter).emit81,
+                                onPress: ref.read(signalEmmiter).exit,
                                 text: "EXIT"
                               ),
                               const SizedBox(height: 10),
@@ -353,7 +353,7 @@ class RemoteControl extends StatelessWidget {
                               const SizedBox(height: 10),
                               ShadowedIconButton(
                                 icon: const Icon(Icons.volume_off),
-                                onPress: ref.read(signalEmmiter).info,
+                                onPress: ref.read(signalEmmiter).mute,
                               ),                               
                             ],
                           ),                          
@@ -411,7 +411,7 @@ class RemoteControl extends StatelessWidget {
                             children: [
                               ShadowedIconButton(
                                 icon: const Icon(Icons.fast_rewind),
-                                onPress: ref.read(signalEmmiter).info,
+                                onPress: ref.read(signalEmmiter).backwards,
                               ),                               
                               const SizedBox(height: 10),
                               Text(
@@ -424,7 +424,7 @@ class RemoteControl extends StatelessWidget {
                               const SizedBox(height: 10),
                               ShadowedIconButton(
                                 icon: const Icon(Icons.fast_forward),
-                                onPress: ref.read(signalEmmiter).info,
+                                onPress: ref.read(signalEmmiter).forward,
                               ),                               
                             ],
                           ),                          

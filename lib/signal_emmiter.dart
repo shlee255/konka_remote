@@ -1,11 +1,12 @@
-import 'dart:convert';
+//import 'dart:convert';
 // import 'dart:math';
 
 import 'lg_signal_codes.dart';
 import 'package:ir_sensor_plugin/ir_sensor_plugin.dart';
-import 'package:isolate_handler/isolate_handler.dart';
+//import 'package:isolate_handler/isolate_handler.dart';
 import 'package:riverpod/riverpod.dart';
 
+/*
 IsolateHandler _isolates = IsolateHandler();
 
 @pragma("vm:_entryPoint")
@@ -24,11 +25,33 @@ void _emmit(String json) async {
 
   _isolates.kill(_map['isolate']!);
 }
+*/
 
 final signalEmmiter = Provider<SignalEmmiter>((ref) => LgRemoteSignalEmmiter());
 
 abstract class SignalEmmiter {
-  void turnOnOff();
+  void turnOnOff(); // Power
+  void emit1();
+  void emit2();
+  void emit3();
+  void emit4();
+  void emit5();
+  void emit6();
+  void emit7();
+  void emit8();
+  void emit9();
+  void emit0();
+  void emitAD();
+  void input();
+  void text();
+  void fav();
+  void settings();
+  void tv();
+  void netFlix();
+  void youTube();
+  void primeVideo();
+  void myTV();
+
   void home();
   void info();
   void navigateUp();
@@ -68,6 +91,65 @@ abstract class SignalEmmiter {
 }
 
 class LgRemoteSignalEmmiter implements SignalEmmiter {
+  // Skyworth
+  static const int hdrMark  = 4500;
+  static const int hdrSpace = 4500;
+
+  static const int mark        = 562;
+  static const int oneSpace    = 1687;
+  static const int zeroSpace   = 562;
+
+  static const int end1Space = 48200;
+  static const int end2Space = 23300;
+
+  static const int skyworthAddress = 0x70;
+
+  static const int skyworthPower = 0x30;
+
+  static const int skyworth0 = 0x00;
+  static const int skyworth1 = 0x80;
+  static const int skyworth2 = 0x40;
+  static const int skyworth3 = 0xC0;
+  static const int skyworth4 = 0x20;
+  static const int skyworth5 = 0xA0;
+  static const int skyworth6 = 0x60;
+  static const int skyworth7 = 0xE0;
+  static const int skyworth8 = 0x10;
+  static const int skyworth9 = 0x90;
+
+  static const int skyworthInfo = 0x68;
+  static const int skyworthAD = 0xE6;
+  static const int skyworthInput = 0xF0;
+  static const int skyworthText = 0xD5;
+  static const int skyworthFav = 0xB5;
+  static const int skyworthSettings = 0x08;
+
+  static const int skyworthUp = 0x42;
+  static const int skyworhtDown = 0xC2;
+  static const int skyworthLeft= 0x22;
+  static const int skyworthRight= 0xA2;
+  static const int skyworthOK= 0x62;
+
+  static const int skyworthBack = 0x62;
+  static const int skyworthHome = 0x1E;
+  static const int skyworthTV = 0x2D;
+  static const int skyworthExit = 0xAD;
+  static const int skyworthMute = 0xB0;
+  static const int skyworthVolumeUp = 0x28;
+  static const int skyworthVolumeDown = 0xA8;
+  static const int skyworthFB = 0x02;
+  static const int skyworthFF = 0x82;
+  static const int skyworthRed = 0x05;
+  static const int skyworthGreen = 0x85;
+  static const int skyworthYellow = 0x45;
+  static const int skyworthBlue = 0xC5;
+  static const int skyworthNetFlix = 0x2B;
+  static const int skyworthYouTube = 0x07;
+  static const int skyworthPrimeVideo = 0x6B;
+  static const int skyworthMyTV = 0x3E;
+ 
+/*
+  // Konka
   static const int hdrMark  = 3000;
   static const int hdrSpace = 3000;
 
@@ -77,6 +159,7 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   static const int end1Space = 4000;
   static const int end2Space = 23300;
+*/
 
   static const int konka0 = 0x0200;
   static const int konka1 = 0x0201;
@@ -140,55 +223,163 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
   static const int konka3D   = 0x0234;
 
   @override
+  void emit0(){
+    emitSkyworth(skyworth0);
+  }
+
+  @override
+  void emit1(){
+    emitSkyworth(skyworth1);
+  }
+
+  @override
+  void emit2(){
+    emitSkyworth(skyworth2);
+  }
+
+  @override
+  void emit3(){
+    emitSkyworth(skyworth3);
+  }
+
+  @override
+  void emit4(){
+    emitSkyworth(skyworth4);
+  }
+
+  @override
+  void emit5(){
+    emitSkyworth(skyworth5);
+  }
+
+  @override
+  void emit6(){
+    emitSkyworth(skyworth6);
+  }
+
+  @override
+  void emit7(){
+    emitSkyworth(skyworth7);
+  }
+
+  @override
+  void emit8(){
+    emitSkyworth(skyworth8);
+  }
+
+  @override
+  void emit9(){
+    emitSkyworth(skyworth9);
+  }
+
+  @override
+  void emitAD(){
+    emitSkyworth(skyworthAD);
+  }
+
+  @override
+  void input(){
+    emitSkyworth(skyworthInput);
+  }
+
+  @override
+  void text(){
+    emitSkyworth(skyworthText);
+  }
+
+  @override
+  void fav(){
+    emitSkyworth(skyworthFav);
+  }
+
+  @override
+  void settings(){
+    emitSkyworth(skyworthSettings);
+  }
+
+  @override
+  void tv(){
+    emitSkyworth(skyworthTV);
+  }
+
+  @override
+  void netFlix() {
+    emitSkyworth(skyworthNetFlix);
+  }
+
+  @override
+  void youTube() {
+    emitSkyworth(skyworthYouTube);
+  }
+
+  @override
+  void primeVideo() {
+    emitSkyworth(skyworthPrimeVideo);
+  }
+
+  @override
+  void myTV() {
+    emitSkyworth(skyworthMyTV);
+  }
+
+  @override
   void backwards() {
-    emitKonka(konkaFB);
+    emitSkyworth(skyworthFB);
     // emmit(LgSignalCodes.fastBackward);
   }
 
   @override
   void forward() {
-    emitKonka(konkaFF);
+    emitSkyworth(skyworthFF);
+    // emitKonka(konkaFF);
     // emmit(LgSignalCodes.fastForward);
   }
 
   @override
   void home() {
+    emitSkyworth(skyworthHome);    
     emmit(LgSignalCodes.home);
   }
 
   @override
   void info() {
+    emitSkyworth(skyworthInfo);
     emitKonka(konkaInfo);
     // emmit(LgSignalCodes.info);
   }
 
   @override
   void mute() {
-    emitKonka(konkaMute);
+    emitSkyworth(skyworthMute);
+    // emitKonka(konkaMute);
     // emmit(LgSignalCodes.mute);
   }
 
   @override
   void navigateDown() {
-    emitKonka(konkaDown);
+    emitSkyworth(skyworhtDown);
+    // emitKonka(konkaDown);
     // emmit(LgSignalCodes.navigateDown);
   }
 
   @override
   void navigateLeft() {
-    emitKonka(konkaLeft);
+    emitSkyworth(skyworthLeft);
+    //    emitKonka(konkaLeft);
     // emmit(LgSignalCodes.navigateLeft);
   }
 
   @override
   void navigateRight() {
-    emitKonka(konkaRight);
+    emitSkyworth(skyworthRight);
+    // emitKonka(konkaRight);
     // emmit(LgSignalCodes.navigateRight);
   }
 
   @override
   void navigateUp() {
-    emitKonka(konkaUp);
+    emitSkyworth(skyworthUp);
+    //emitKonka(konkaUp);
     // emmit(LgSignalCodes.navigateUp);
   }
 
@@ -200,7 +391,8 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   @override
   void ok() {
-    emitKonka(konkaOk);
+    emitSkyworth(skyworthOK);
+    //    emitKonka(konkaOk);
     // emmit(LgSignalCodes.ok);
   }
 
@@ -236,54 +428,63 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
 
   @override
   void turnOnOff() {
-    emitKonka(konkaPower);
+    emitSkyworth(skyworthPower);
+    //emitKonka(konkaPower);
     //emmit(LgSignalCodes.turnOnOff);
   }
 
   @override
   void volumeDown() {
-    emitKonka(konkaVolumeDown);
+    emitSkyworth(skyworthVolumeDown);
+    // emitKonka(konkaVolumeDown);
     // emmit(LgSignalCodes.volumeDown);
   }
 
   @override
   void volumeUp() {
-    emitKonka(konkaVolumeUp);
+    emitSkyworth(skyworthVolumeUp);
+    // emitKonka(konkaVolumeUp);
     // emmit(LgSignalCodes.volumeUp);
   }
 
   @override
   void back() {
-    emmit(LgSignalCodes.back);
+    emitSkyworth(skyworthBack);
+    // emmit(LgSignalCodes.back);
   }
 
   @override
   void exit() {
-    emitKonka(konkaExit);
+    emitSkyworth(skyworthExit);
+    // emitKonka(konkaExit);
     // emmit(LgSignalCodes.exit);
   }
 
   @override
   void blue() {
-    emitKonka(konkaBlue);
+    emitSkyworth(skyworthBlue);
+    // emitKonka(konkaBlue);
     // emmit(LgSignalCodes.blue);
   }
 
   @override
   void green() {
-    emitKonka(konkaGreen);
+    emitSkyworth(skyworthGreen);
+    // emitKonka(konkaGreen);
     // emmit(LgSignalCodes.green);
   }
 
   @override
   void red() {
-    emitKonka(konkaRed);
+    emitSkyworth(skyworthRed);
+    // emitKonka(konkaRed);
     // emmit(LgSignalCodes.red);
   }
 
   @override
   void yellow() {
-    emitKonka(konkaYellow);
+    emitSkyworth(skyworthYellow);
+    // emitKonka(konkaYellow);
     // emmit(LgSignalCodes.yellow);
     // emitKonka(konka8);
     // emitKonka(konka1);
@@ -389,11 +590,46 @@ class LgRemoteSignalEmmiter implements SignalEmmiter {
     emitInt(list);
   }
 
+  void emitSkyworth(int command) {
+    List<int> list = [];
+    list.add(hdrMark);
+    list.add(hdrSpace);
+
+    List<int> header1 = decodeInt(skyworthAddress,8);
+    List<int> header2 = decodeInt(skyworthAddress,8);
+
+    List<int> data1 = decodeInt(command,8);
+    List<int> data2 = decodeInt(~command,8);
+
+    list.addAll(header1);
+    list.addAll(header2);
+    list.addAll(data1);
+    list.addAll(data2);
+
+    list.add(mark);
+    list.add(end1Space);    
+
+/*
+    int messageTime=0;
+    for(int a=0;a<list.size();++a) {
+      messageTime += list.get(a).intValue();
+    }
+
+    for(int a=0;a<repeats;a++)
+    {
+        message.add(HDR_MARK);
+        message.add(REPEAT_SPACE);
+        message.add(SPACE);
+        message.add(REPEAT_TIME - (HDR_MARK + REPEAT_SPACE +SPACE));
+    }
+*/
+    emitInt(list);
+  }
+
   List<int> decodeInt(int num, int bits) {
     List<int> values = [];
 
-    for (int i = bits - 1; i >= 0; i--)
-    {
+    for (int i = bits - 1; i >= 0; i--) {
         values.add(mark);
         values.add(((num & (1 << i)) == 0)?zeroSpace:oneSpace);
     }
